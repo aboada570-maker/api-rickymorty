@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Rick and Morty API</title>
+    <link rel="stylesheet" href="style.css"/>
+    <link rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/vs2015.min.css">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+  </head>
+
+  <body>
+    <!--Header-->
+    <header class="header" style="display: grid; place-items: center; padding: 20px;">
+      <img class="logo" 
+           src="rick_and_morty.svg" 
+           alt="Logo Rick and Morty"
+           style="width: 80%;">
+    </header>  
+    <main>
+      <h1 class="title">Buscador de Personajes</h1>
+      <p class="page-description">Explora el universo de Rick and Morty con nuestro buscador de personajes. 
+        ¡Diviértete descubriendo más sobre Rick, Morty y sus aventuras!</p>
+  
+    <!--Filtros de búsqueda-->
+    <div id="filters" class="filters">
+      <input type="text" id="name-filters" placeholder="Buscar por nombre"/>
+      <select id="status-filter">
+        <option value="" disabled selected>Estado</option>
+        <option value="alive">Vivo</option>
+        <option value="dead">Muerto</option>
+        <option value="unknown">Desconocido</option>
+      </select>
+      <select id="species-filter">
+        <option value="" disabled selected>Especie</option>
+        <option value="human">Humano</option>
+        <option value="alien">Alienígena</option>
+        <option value="robot">Robot</option>
+        <option value="mythological">Mitológico</option>
+        <option value="unknown">Desconocido</option>
+      </select>
+    </div>
+
+    <!--Contenedor de las tarjetas-->
+    <div id="cards-container" class="cards-container"></div>
+    <div id="sentinel"></div>
+
+    <!--Mensajes-->
+    <div id="loading" class="loading hidden">
+      <img src="loading.gif" alt="Cargando..." width="100">
+      <p>Cargando personajes...</p>
+    </div>
+    <p id="error" class="error hidden">No se encontraron resultados</p>
+    </main>
+
+    <!--Vista de detalle del personaje-->
+    <div id="modal" class="modal hidden">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h2>Detalle del Personaje</h2>
+          <span id="close-modal" class="close" onclick="closeModal(event)">&times;</span>
+        </div>
+
+        <div class="modal-body">
+          <img id="detail-image" alt="Imagen del personaje">
+
+          <div class="modal-info">
+            <h3 id="detail-name"></h3>
+            <p id="detail-status" class="badge"></p>
+            <p><span>🧬 Especie:</span> <span id="detail-species"></span></p>
+            <p><span>⚧ Género:</span> <span id="detail-gender"></span></p>
+          </div>
+        </div>
+
+        <button id="ai-btn">Generar resumen con IA</button>
+        <p id="ai-loading" class="hidden">Generando resumen...</p>
+        <div id="ai-result" class="ai-result"></div>
+
+        <h3 class="json-title">Respuesta JSON Cruda</h3>
+        <pre><code id="json-raw" class="language-json"></code></pre>
+
+      </div>
+    </div>
+
+    <footer>  
+      <hr>
+      <p class="footer-text">&copy; Ana Lucía Boada - 2025</p>
+    </footer>
+    <script src="script.js"></script>
+
+    <button id="scrollTopBtn" title="Subir al inicio">⬆</button>
+
+  </body>
+</html>
